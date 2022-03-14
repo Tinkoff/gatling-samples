@@ -5,7 +5,11 @@ import io.gatling.core.structure.ScenarioBuilder
 import ru.tinkoff.load.myhttpservice.cases.Actions._
 import ru.tinkoff.load.myhttpservice.feeders.Feeders._
 
-// Объект-компаньон
+/*
+Объект-компаньон для класса CommonScenario,
+по сути синтаксический сахар, что бы можно было вызвать сценарий
+таким образом CommonScenario(), вместо new CommonScenario().scn
+*/
 object CommonScenario {
   def apply(): ScenarioBuilder = new CommonScenario().scn
 }

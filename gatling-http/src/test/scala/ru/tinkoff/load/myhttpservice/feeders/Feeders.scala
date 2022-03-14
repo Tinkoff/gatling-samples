@@ -5,11 +5,11 @@ import ru.tinkoff.gatling.feeders._
 
 object Feeders {
 
-  // Для имени компьютера будем использовать рандомную строку с нужным алфавитом.
+  // Для имени компьютера будем использовать случайную строку с нужным алфавитом.
   val randomComputerName: Feeder[String] =
     RandomRangeStringFeeder("randomComputerName", alphabet = ('A' to 'Z').mkString)
 
-  // Используем фидер для создания рандомной даты
+  // Используем фидер для создания случайной даты
   val introducedDate: Feeder[String] = RandomDateFeeder("introduced")
 
   // Создаем случайную дату со сдвигом относительно 'introduced' даты

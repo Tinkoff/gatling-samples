@@ -11,7 +11,7 @@ package object myhttpservice {
   val httpProtocol: HttpProtocolBuilder = http
   // Используем стандартную переменную из gatling picatinny, значение которой подтянется из simulation.conf
     .baseUrl(baseUrl)
-    // Базовые хедеры
+    // Базовые заголовки
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")
     .acceptLanguageHeader("en-US,en;q=0.5")
