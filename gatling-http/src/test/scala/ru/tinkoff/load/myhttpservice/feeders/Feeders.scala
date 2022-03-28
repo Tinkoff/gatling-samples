@@ -15,7 +15,7 @@ object Feeders {
   // Создаем случайную дату со сдвигом относительно 'introduced' даты
   val discontinuedDate: Feeder[String] = RandomDateRangeFeeder("introduced", "discontinued", 3)
 
-  // Объединяем фидеры в одну переменную для удобств
+  // Объединяем фидеры в одну переменную для удобства
   val feeders: Feeder[Any] = randomComputerName ** introducedDate ** discontinuedDate
 
 }
