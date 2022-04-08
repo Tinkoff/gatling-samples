@@ -12,9 +12,14 @@ object CommonScenario {
 
 class CommonScenario {
 
-  val scn: ScenarioBuilder = scenario("Common Scenario")
+  val scn: ScenarioBuilder = {
+    // Указываем название сценария
+    scenario("Common Scenario")
+    // Подключаем feeder
     .feed(myRandomStringFeeder)
+    // Отправляем сообщения
     .exec(kafkaActions.sendMyMessage)
     .exec(kafkaActions.sendOtherMessage)
+  }
 
 }

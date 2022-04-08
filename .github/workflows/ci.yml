@@ -1,0 +1,54 @@
+name: compile test
+on:
+  pull_request:
+  push:
+  
+jobs:
+
+  compile-http:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: openjdk@1.17
+
+      - name: Compile http sample
+        run: |
+          cd gatling-http
+          sbt compile
+
+  compile-jdbc:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: openjdk@1.17
+
+      - name: Compile jdbc sample
+        run: |
+          cd gatling-jdbc
+          sbt compile
+
+  compile-kafka:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: openjdk@1.17
+
+      - name: Compile kafka sample
+        run: |
+          cd gatling-kafka
+          sbt compile

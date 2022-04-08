@@ -6,8 +6,8 @@ import io.gatling.core.config.GatlingPropertiesBuilder
 object GatlingRunner {
 
   def main(args: Array[String]): Unit = {
-
-    // this is where you specify the class you want to run
+    
+    // Указывает имя симуляции Debug, либо какой-то другой, например, MaxPerformance
     val simulationClass = classOf[Debug].getName
 
     val props = new GatlingPropertiesBuilder

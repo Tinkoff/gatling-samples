@@ -9,14 +9,28 @@ import ru.tinkoff.gatling.kafka.Predef._
 class MaxPerformance extends Simulation with Annotations {
 
   setUp(
-    CommonScenario().inject(
-      incrementUsersPerSec((intensity / stagesNumber).toInt) // интенсивность на ступень
-        .times(stagesNumber)                                 // Количество ступеней
-        .eachLevelLasting(stageDuration)                     // Длительность полки
-        .separatedByRampsLasting(rampDuration)               // Длительность разгона
-        .startingFrom(0),                                    // Начало нагрузки с
-    ),
-  ).protocols(kafkaProtocol)
-    .maxDuration(testDuration)                               // общая длительность теста
-
+    //Указываем сценарий
+    new CommonScenario().createTableScn
+      // Сценарий будет выполнятся 1 раз
+      .inject(atOnceUsers(1))
+      // Второй сценарий начнет работу только после завершения первого
+      .andThen(
+        // Указываем сценарий
+        new CommonScenario().insertInTable.inject(
+          // Интенсивность на ступень
+          incrementUsersPerSec((intensity / stagesNumber).toInt)
+            // Количество ступеней
+            .times(stagesNumber)
+            // Длительность полки
+            .eachLevelLasting(stageDuration)
+            // Длительность разгона
+            .separatedByRampsLasting(rampDuration)
+            // Начало нагрузки с
+            .startingFrom(0),
+        ),
+      ))
+    // Указываем протокол
+    .protocols(kafkaProtocol)
+    // Общая длительность теста
+    .maxDuration(testDuration)
 }

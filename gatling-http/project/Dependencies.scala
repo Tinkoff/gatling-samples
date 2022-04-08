@@ -10,4 +10,8 @@ object Dependencies {
     "ru.tinkoff" %% "gatling-picatinny"
   ).map(_ % "0.10.0")
 
+  lazy val janino: Seq[ModuleID] = Seq(
+    "org.codehaus.janino" % "janino",
+  ).map(_ % "3.1.6")
+
 }

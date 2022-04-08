@@ -10,10 +10,13 @@ class Stability extends Simulation with Annotations {
 
   setUp(
     CommonScenario().inject(
-      rampUsersPerSec(0) to intensity.toInt during rampDuration, //разгон
-      constantUsersPerSec(intensity.toInt) during stageDuration, //полка
+      // Плавное увеличение нагрузки до целевого значения
+      rampUsersPerSec(0) to intensity.toInt during rampDuration,
+      // Длительность полки
+      constantUsersPerSec(intensity.toInt) during stageDuration,
     ),
+    // Указываем протокол
   ).protocols(kafkaProtocol)
-    .maxDuration(testDuration) //длительность теста = разгон + полка
-
+    // Общая длительность теста
+    .maxDuration(testDuration)
 }

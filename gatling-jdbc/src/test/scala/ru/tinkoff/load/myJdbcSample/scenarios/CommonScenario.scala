@@ -11,10 +11,16 @@ object CommonScenario {
 
 class CommonScenario {
 
-  val scn: ScenarioBuilder = scenario("Common Scenario")
-    .feed(myRandomStringFeeder)    // Добавление Feeder
-    .exec(JdbcActions.createTable) // Выполнение запроса на создание таблицы
-    .exec(JdbcActions.insertData)  // Выполнение запроса на вставку данных в таблицу
+  val scn: ScenarioBuilder = {
+    // Указываем имя запроса
+    scenario("Common Scenario")
+      // Добавление Feeder
+    .feed(myRandomStringFeeder)
+      // Выполнение запроса на создание таблицы
+    .exec(JdbcActions.createTable)
+      // Выполнение запроса на вставку данных в таблицу
+    .exec(JdbcActions.insertData)
+  }
 
   val createTableScn: ScenarioBuilder = scenario("create table")
     .exec(JdbcActions.createTable)
