@@ -9,6 +9,7 @@ import scala.concurrent.duration.DurationInt
 package object myJdbcSample {
 
   val jdbcProtocol: JdbcProtocolBuilder = DB
+    // Указываем строку подключения к БД
     .url(baseUrl)
     .username(getStringParam("dbUser"))
     .password(getStringParam("dbPassword"))

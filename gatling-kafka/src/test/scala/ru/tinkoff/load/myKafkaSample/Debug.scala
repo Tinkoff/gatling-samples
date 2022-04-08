@@ -7,8 +7,12 @@ import ru.tinkoff.load.myKafkaSample.scenarios.CommonScenario
 class Debug extends Simulation {
 
   setUp(
-    CommonScenario().inject(atOnceUsers(1)),
+    // Вызываем сценарий
+    CommonScenario()
+      // Задаем интенсивность
+      .inject(atOnceUsers(1)),
   ).protocols(
+    // Указываем протокол
     kafkaProtocol,
   )
 }

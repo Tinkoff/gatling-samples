@@ -6,8 +6,12 @@ import ru.tinkoff.gatling.kafka.request.builder.RequestBuilder
 
 object kafkaActions {
 
-  val sendMyMessage: RequestBuilder[_, Any] = kafka("my message")
-    .send("myMessage", "Hello!")
+  val sendMyMessage: RequestBuilder[_, Any] = {
+    // Указываем имя запроса
+    kafka("my message")
+      // Указываем ключ и сообщение
+      .send("myMessage", "Hello!")
+  }
 
   val sendOtherMessage: RequestBuilder[_, Any] = kafka("my other message")
     .send("myMessage", "Hello, #{name}!")

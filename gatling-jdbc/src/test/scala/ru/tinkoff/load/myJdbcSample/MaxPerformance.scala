@@ -9,16 +9,29 @@ import ru.tinkoff.load.jdbc.Predef._
 class MaxPerformance extends Simulation with Annotations {
 
   setUp(
-    new CommonScenario().createTableScn.inject(atOnceUsers(1))
+    //Указываем сценарий
+    new CommonScenario().createTableScn
+      // Сценарий будет выполнятся 1 раз
+      .inject(atOnceUsers(1))
+      // Второй сценарий начнет работу только после завершения первого
       .andThen(
+        // Указываем сценарий
         new CommonScenario().insertInTable.inject(
-          incrementUsersPerSec((intensity / stagesNumber).toInt) // интенсивность на ступень
-            .times(stagesNumber)                                 // Количество ступеней
-            .eachLevelLasting(stageDuration)                     // Длительность полки
-            .separatedByRampsLasting(rampDuration)               // Длительность разгона
-            .startingFrom(0),                                    // Начало нагрузки с
+          // Интенсивность на ступень
+          incrementUsersPerSec((intensity / stagesNumber).toInt)
+            // Количество ступеней
+            .times(stagesNumber)
+            // Длительность полки
+            .eachLevelLasting(stageDuration)
+            // Длительность разгона
+            .separatedByRampsLasting(rampDuration)
+            // Начало нагрузки с
+            .startingFrom(0),
         ),
-      )).protocols(jdbcProtocol)
-    .maxDuration(testDuration)                               // общая длительность теста
+      ))
+    // Указываем протокол
+    .protocols(jdbcProtocol)
+    // Общая длительность теста
+    .maxDuration(testDuration)
 
 }

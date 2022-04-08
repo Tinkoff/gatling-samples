@@ -7,10 +7,13 @@ import ru.tinkoff.load.myJdbcSample.scenarios.CommonScenario
 class Debug extends Simulation {
 
   setUp(
-    CommonScenario()          // Вызов сценария
-      .inject(atOnceUsers(1)),// Нагрузка будет подаваться 1 пользователем = 1 итерация
+    // Вызов сценария
+    CommonScenario()
+      // Нагрузка будет подаваться 1 пользователем = 1 итерация
+      .inject(atOnceUsers(1)),
   ).protocols(
-    jdbcProtocol,             // Указываем наш протокол
+    // Указываем протокол
+    jdbcProtocol,
   )
 
 }
