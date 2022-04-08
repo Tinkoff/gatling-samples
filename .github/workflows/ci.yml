@@ -1,9 +1,8 @@
 name: compile test
 on:
   pull_request:
-    branches: ['**']
   push:
-    branches: ['**']
+  
 jobs:
 
   compile-http:
@@ -33,7 +32,7 @@ jobs:
         with:
           java-version: openjdk@1.17
 
-      - name: Cpmpile jdbc sample
+      - name: Compile jdbc sample
         run: |
           cd gatling-jdbc
           sbt compile
@@ -53,4 +52,3 @@ jobs:
         run: |
           cd gatling-kafka
           sbt compile
-
