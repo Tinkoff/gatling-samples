@@ -33,5 +33,4 @@ class MaxPerformance extends Simulation with Annotations {
     .protocols(jdbcProtocol)
     // Общая длительность теста
     .maxDuration(testDuration)
-
 }
