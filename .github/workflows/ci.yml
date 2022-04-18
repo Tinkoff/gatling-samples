@@ -52,3 +52,35 @@ jobs:
         run: |
           cd gatling-kafka
           sbt compile
+
+  compile-amqp:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: openjdk@1.17
+
+      - name: Compile amqp sample
+        run: |
+          cd gatling-amqp
+          sbt compile
+
+  compile-grpc:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: openjdk@1.17
+
+      - name: Compile grpc sample
+        run: |
+          cd gatling-grpc
+          sbt compile
