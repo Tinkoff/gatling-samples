@@ -1,57 +1,64 @@
-# Gatling Myrabbitmq Project
 
-[[_TOC_]]
+# Gatling Template Project
 
-## CI
+Template project for gatling performance tests
 
-Simulations are run using [perf-ci-template](https://gitlab.tcsbank.ru/perf-core/perf-ci-template) and [gatling-docker-gun](https://gitlab.tcsbank.ru/perf-core/gatling-docker-gun)
 
-All CI configuration can be found in [.gitlab-ci.yml](.gitlab-ci.yml)
+## Project structure
 
-## Launch and debug
-
-### Project structure
-
-```bash
+```
 src.test.resources - project resources
-src.test.scala.ru.tinkoff.load.myRabbitmq.cases - simple cases
-src.test.scala.ru.tinkoff.load.myRabbitmq.scenarios - common load scenarios assembled from simple cases
-src.test.scala.ru.tinkoff.load.myRabbitmq - common test configs
+src.test.scala.ru.tinkoff.load.myaRabbitmq.cases - simple cases
+src.test.scala.ru.tinkoff.load.myaRabbitmq.scenarios - common load scenarios assembled from simple cases
+src.test.scala.ru.tinkoff.load.myaRabbitmq - common test configs
 ```
 
-### Debug
+## Test configuration
+
+Pass this params to JVM using -DparamName="paramValue" AND -Dconfig.override_with_env_vars=true
+
+```
+Gatling logs:
+CONSOLE_LOGGING=ON - turn on console logging
+FILE_LOGGING=ON - turn on logging in file "target/gatling/gatling.log"
+GRAYLOG_LOGGING=ON - turn on logging in graylog
+    graylog params:
+        GRAYLOG_HOST - graylog host
+        GRAYLOG_PORT - on which port graylog input is
+        GRAYLOG_STREAM - name of graylog stream
+
+Gatling metrics in influxdb:
+GRAPHITE_HOST - influxdb with configured graphite plugin host
+GRAPHITE_PORT - see /etc/influxdb/influxdb.conf: bind-address
+INFLUX_PREFIX - see /etc/influxdb/influxdb.conf: database
+```
+
+Also you can pass all params from gatling-picatinny or use custom params
+read: https://github.com/TinkoffCreditSystems/gatling-picatinny/blob/master/README.md
+
+## Debug
 
 1. Debug test with 1 user, requires proxy on localhost:8888, eg using Fiddler or Wireshark
 
-```bash
-"Gatling / testOnly ru.tinkoff.load.myRabbitmq.Debug"
+```
+"Gatling / testOnly ru.tinkoff.load.myaRabbitmq.Debug"
 ```
 
 2. Run test from IDEA with breakpoints
 
-```bash
+```
 ru.tinkoff.load.GatlingRunner
 ```
 
-### Launch test
+## Launch test
 
-```bash
-"Gatling / testOnly ru.tinkoff.load.myRabbitmq.MaxPerformance" - maximum performance test
-"Gatling / testOnly ru.tinkoff.load.myRabbitmq.Stability" - stability test
+```
+"Gatling / testOnly ru.tinkoff.load.myaRabbitmq.MaxPerformance" - maximum performance test
+"Gatling / testOnly ru.tinkoff.load.myaRabbitmq.Stability" - stability test
 ```
 
-## Links
+## Help
 
-Performance team slack channel: [#team-performance-ask](https://tinkoff.slack.com/archives/CEY0FJD5Y)
+telegram: @qa_load
 
-Simulation run notifications: [#performance-test-runs](https://tinkoff.slack.com/archives/C011K6YS1GS)
-
-Performance testing projects: [repositories](https://devplatform.tcsbank.ru/performance/repositories)
-
-Cosmos: [latest runs](https://devplatform.tcsbank.ru/performance/cosmos/latest)
-
-Wiki info page: [Performance & Load](https://wiki.tcsbank.ru/pages/viewpage.action?pageId=19441513)
-
-Performance CI template info: [perf-ci-template](https://gitlab.tcsbank.ru/perf-core/perf-ci-template)
-
-Gatling Docker Gun info: [gatling-docker-gun](https://gitlab.tcsbank.ru/perf-core/gatling-docker-gun)
+gatling docs: https://gatling.io/docs/current/general
