@@ -95,4 +95,6 @@
         </if>
     </root>
 
+    <logger name="com.github.phisgr.gatling.grpc" level="TRACE" />
+
 </configuration>
