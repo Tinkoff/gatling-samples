@@ -7,8 +7,8 @@
 2. [Использование Gatling. Разбираемся в тестировании HTTP](https://habr.com/ru/company/tinkoff/blog/658479/) ([пример скриптов](gatling-http/))
 3. [Gatling. Тестирование JDBC](https://habr.com/ru/company/tinkoff/blog/663718/) ([пример скриптов](gatling-jdbc/))
 4. [Использование Gatling. Тестирование gRPC](https://habr.com/ru/company/tinkoff/blog/664674/) ([пример скриптов](gatling-grpc/))
-5. Kafka ([пример скриптов](gatling-kafka/))
-6. AMQP ([пример скриптов](gatling-amqp))
+5. [Gatling. Тестирование Kafka](https://habr.com/ru/company/tinkoff/blog/666886/) ([пример скриптов](gatling-kafka/))
+6. [Использование Gatling. Тестирование AMQP](https://habr.com/ru/company/tinkoff/blog/670768/) ([пример скриптов](gatling-amqp))
 
 ## Ссылки на используемые плагины
 - [JDBC](https://github.com/Tinkoff/gatling-jdbc-plugin)
